@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glow Shapes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #101012; /* 近乎炭黑的深色背景 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      padding: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ---------- 图形通用样式 ---------- */
+    .shape {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* hover 时整体上移 10px */
+    .shape:hover {
+      transform: translateY(-10px);
+    }
+
+    /* 中央 "hover" 字样，默认隐藏，hover 时淡入 */
+    .hover-text {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .shape:hover .hover-text {
+      opacity: 1;
+    }
+
+    /* ---------- 1. 正方形：暖橙到橘红渐变，红色外光晕 ---------- */
+    .shape-square {
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(135deg, #ffa45c, #ff4d2e);
+      box-shadow: 0 10px 30px rgba(255, 77, 46, 0.55);
+    }
+    .shape-square:hover {
+      box-shadow: 0 0 42px rgba(255, 77, 46, 0.75);
+    }
+
+    /* ---------- 2. 圆角正方形：鲜亮青绿色，绿色微光 ---------- */
+    .shape-rounded-green {
+      width: 110px;
+      height: 110px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #3df0c0, #0fb898);
+      box-shadow: 0 10px 30px rgba(61, 240, 192, 0.5);
+    }
+    .shape-rounded-green:hover {
+      box-shadow: 0 0 42px rgba(61, 240, 192, 0.72);
+    }
+
+    /* ---------- 3. 更大圆角矩形：淡紫灰渐变，柔和暗紫色光晕 ---------- */
+    .shape-rounded-purple {
+      width: 150px;
+      height: 100px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #b9a9d6, #8a78b8);
+      box-shadow: 0 10px 30px rgba(138, 120, 184, 0.45);
+    }
+    .shape-rounded-purple:hover {
+      box-shadow: 0 0 42px rgba(138, 120, 184, 0.65);
+    }
+
+    /* ---------- 4. 正圆形：浅黄过渡到暖橘，暖黄色朦胧外发光 ---------- */
+    .shape-circle-yellow {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffe29a, #ffb45e);
+      box-shadow: 0 10px 30px rgba(255, 180, 94, 0.5);
+    }
+    .shape-circle-yellow:hover {
+      box-shadow: 0 0 42px rgba(255, 180, 94, 0.72);
+    }
+
+    /* ---------- 5. 圆角方形：暗青灰 / 墨绿灰，微弱暗色光晕 ---------- */
+    .shape-rounded-dark {
+      width: 110px;
+      height: 110px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #46544f, #2e3b37);
+      box-shadow: 0 10px 30px rgba(46, 59, 55, 0.35);
+    }
+    .shape-rounded-dark:hover {
+      box-shadow: 0 0 42px rgba(46, 59, 55, 0.55);
+    }
+
+    /* ---------- 6. 正圆形：浅薰衣草紫，淡紫色柔光 ---------- */
+    .shape-circle-lavender {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #cbb8ff, #a88fd9);
+      box-shadow: 0 10px 30px rgba(168, 143, 217, 0.5);
+    }
+    .shape-circle-lavender:hover {
+      box-shadow: 0 0 42px rgba(168, 143, 217, 0.72);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 1. 正方形 -->
+    <div class="shape shape-square"><span class="hover-text">hover</span></div>
+    <!-- 2. 圆角正方形（青绿） -->
+    <div class="shape shape-rounded-green"><span class="hover-text">hover</span></div>
+    <!-- 3. 更大圆角矩形（淡紫灰） -->
+    <div class="shape shape-rounded-purple"><span class="hover-text">hover</span></div>
+    <!-- 4. 正圆形（浅黄暖橘） -->
+    <div class="shape shape-circle-yellow"><span class="hover-text">hover</span></div>
+    <!-- 5. 圆角方形（暗青灰） -->
+    <div class="shape shape-rounded-dark"><span class="hover-text">hover</span></div>
+    <!-- 6. 正圆形（薰衣草紫） -->
+    <div class="shape shape-circle-lavender"><span class="hover-text">hover</span></div>
+  </div>
+</body>
+</html>
